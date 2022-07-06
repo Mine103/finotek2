@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#fadein').click(function(){//요소를 희미하게 나타낸다.
+                    $('#div1').fadeIn();
+                    $('#div2').fadeIn('slow');
+                    $('#div3').fadeIn(3000);
+                });
+                $('#fadeout').click(function(){//요소를 희미하게 사라지게 한다.
+                    $('#div1').fadeOut();
+                    $('#div2').fadeOut('slow');
+                    $('#div3').fadeOut(3000);
+                });
+                $('#fadetoggle').click(function(){//fadeIn()과 fadeOut()메소드 사이를 토글한다.
+                    $('#div1').fadeToggle();
+                    $('#div2').fadeToggle('slow');
+                    $('#div3').fadeToggle(3000);
+                });
+                $('#fadeto').click(function(){//희미해짐의 정도를 정해준다.
+                    $('#div1').fadeTo('slow', 0.15);
+                    $('#div2').fadeTo('slow', 0.4);
+                    $('#div3').fadeTo('slow', 0.7);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <button id="fadein">fade In</button><br>
+        <button id="fadeout">fade Out</button><br>
+        <button id="fadetoggle">fade Toggle</button><br>
+        <button id="fadeto">fade to</button><br>
+
+        <div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div><br>
+        <div id="div2" style="width:80px;height:80px;display:none;background-color:green;"></div><br>
+        <div id="div3" style="width:80px;height:80px;display:none;background-color:blue;"></div>
+    </body>
+</html>

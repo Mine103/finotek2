@@ -1,0 +1,8 @@
+REGEX = 정규표현식을 사용해서 제외 대상을 지정한다.
+ASPEXTJ = 관련 내용은 7장에서 학습./해당 패턴이 동작하려면 의존 대상에 "aspectjwaever"모듈을 추가해야한다.
+(patterns 속성은 String[] 타입이므로 배열을 이용해서 패턴을 한 개 이상 지정할 수 있다.)
+ANNOATAION = 특정 애노테이션을 붙인 클래스를 제외한다./type 속성값으로 해당 필터를 사용하면 classes 속성에 필터로 사용할 애노테이션 타입을 값으로 준다.
+ASSIGNABLE_TYPE = 특정 타입이다 그 하위 컴포넌트 스캔 대상에서 제외한다./classes 속성에는 제외할 타입 목록을 지정한다.
+(classes 속성 또한 String[] 타입이다.)
+
+설정할 필터가 두 개 이상이면 excludeFilters 속성에 배열을 사용해서 @Filter 목록을 전달하면 된다.

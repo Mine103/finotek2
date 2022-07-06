@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+        <style>
+            body {
+                font-size: 62.5%;
+            }
+            h1 {
+                text-align: center;
+            }
+            input[type="text"], lable {
+                margin-bottom: 12px;
+                padding: 0.4em;
+                width: 95%;
+            }
+        </style>
+        <script>
+            $(document).ready(function(){
+                $('#open-button').click(function(){
+                    $('#dialog').dialog("open");
+                });
+
+                $('#dialog').dialog({
+                    autoOpen: false,
+                    buttons: {
+                        확인: function(){
+                            var eventName = $('#event-name').val();
+                            var eventDate = $('#event-date').val();
+
+                            $('<h1></h1>').html(eventName+" : "+eventDate).appendTo('#output');
+                            $('#event-name').val('');
+                            $('#event-date').val('');
+
+                            $('#dialog').dialog('close');
+                        },
+                        초기화: function(){
+                            $('#event-name').val('');
+                            $('#event-date').val('');
+                        },
+                        취소: function(){
+                            $('#event-name').val('');
+                            $('#event-date').val('');
+                            $('#dialog').dialog('close');
+                        }
+                    },
+                    modal: true
+                });
+
+                $('event-date').datepicker({
+                    dateFormat: 'yy년 mm월 dd일',
+                    numderOfMouths: 2
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1 id="open-button">일정 생성</h1>
+        <hr/>
+        <div id="output"></div>
+
+        <div id="dialog" title="jQuery UI dialog">
+            <h1>Hello jQuery</h1>
+
+            <label for="event-name">일정 이름</label>
+            <input id="event-name" type="text"/>
+
+            <label for="event-date">일정 날짜</label>
+            <input id="event-date" type="text"/>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                /*$('#tag').click(function() {
+                    $('p').hide();
+                    $('#tag').text('tag hide!');
+                });*/
+                $('#id').click(function() {
+                    $('#text').hide();
+                    $('#id').text('id hide!');
+                });
+                $('#class').click(function() {
+                    $('.text').hide();
+                    $('#class').text('class hide!');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h2>This is a heading</h2>
+
+        <p>This is a paragraph1.</p>
+        <p>This is another1</p>
+
+        <button id="tag">Click me1</button>
+
+        <p>This is a paragraph2.</p>
+        <p id="text">This is another2</p>
+
+        <button id="id">Click me2</button>
+
+        <p class="text">This is a paragraph3.</p>
+        <p>This is another3</p>
+
+        <button id="class">Click me3</button>
+    </body>
+</html>

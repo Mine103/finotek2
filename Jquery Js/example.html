@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.food img').draggable({
+                    stop: function(){
+                        $(this).animate({top: 0, left: 0}, 1000, 'saseIutElastic');
+                    }
+                });
+                $('#btn').click(function(){
+                    var value = $('#demo').val();
+                    alert(value);
+
+                    $('#demo').val("setter value");
+                });
+            });
+        </script>
+        <style type="text/css">
+	        .food {
+		        text-align:center;
+	        }
+	        .food img {
+		        cursor:move;
+	        }
+            .getset {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="food">
+	        아래 음식들을 드래그 했다가 놓아보세요.<br><br>
+	        <img src="http://superkts.com/img/icon/food/fff22.gif" />
+	        <img src="http://superkts.com/img/icon/food/fff27.gif" />
+	        <img src="http://superkts.com/img/icon/food/fff28.gif" />
+	        <img src="http://superkts.com/img/icon/food/fo028.gif" />
+	        <img src="http://superkts.com/img/icon/food/fo035.gif" /><br><br>
+	        <img src="http://superkts.com/img/icon/food/food_fd32.gif" />
+	        <img src="http://superkts.com/img/icon/food/food09[1].gif" />
+	        <img src="http://superkts.com/img/icon/food/food_fd213.gif" />
+        </div>
+        <br>
+        <div class="getset">
+            입력: <input type="text" id="demo" value="">
+            <br>
+            <button id="btn">출력</button>
+        </div>
+        </body>
+</html>

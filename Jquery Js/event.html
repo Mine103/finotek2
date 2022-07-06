@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('p').click(function(){
+                    alert('클릭');
+                });
+                $('p').dbclick(function(){
+                    alert('더블 클릭');
+                });
+                $('p').mouseenter(function(){
+                    alert('Mouse Entered!');
+                });
+                $('p').mouseenter(function(){
+                    alert('Mouse Leave!');
+                });
+                $('$p2').hover(function(){
+                    alert('Mouse Entered! but hover');
+                },
+                function(){
+                    alert('Mouse Leave! but hover');
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <p>This is a paragraph.</p>
+
+        <p id="p1">This is a paragraph1. but id is p1</p>
+
+        <p id="p2">This is a paragraph1. but id is p2</p>
+    </body>
+</html>
