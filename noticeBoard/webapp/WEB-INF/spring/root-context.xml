@@ -1,0 +1,36 @@
+<!--1.datasource 설정: 드라이버 관련-->
+<!--  Database Connection을 생성 -->
+<!-- DB 계정 이름과 패스워드 입력 -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+  <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+  <property name="username" value="scott"></property>
+  <property name="password" value="tiger"></property>
+</bean>
+
+<!--2.sqlSessionFactory 설정-->
+
+	<!-- classpath: 빌드시 컴파일된 class 파일들의 위치 경로 -->
+        <!-- <property> 태그 -->
+        <!--
+        SqlSessionFactoryBean 클래스에서 선언된
+        dataSource, configLocation, mapperLoations 
+        변수들의 값을 할당 받는다!! 
+        -->
+
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource" />
+	<property name="configLocation" value="classpath:/mybatis-onfi.xml"/>
+	<property name="mapperLoations" value="classpath:/*Mapper.xml"/>
+</bean>
+
+	<!-- <constructor-arg> -->
+	<!-- sqlSession bean에 sqlSessionFactory 객체 주입-->
+        <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+          <constructor-arg index="0" ref="sqlSessionFactory" />
+        </bean>
+
+<!-- 3. SqlSessionTeplate DB연결&종료-->
+  <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destory-method="clearCache">
+  	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+  </bean>
