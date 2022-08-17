@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,8 @@
     <!-- Custom styles for this template-->
     <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
     
+    <script src="resources/js/register.js"></script>
+    
 </head>
 <body class="container bg-gradient-primary">
 
@@ -23,28 +26,30 @@
 <div class="card-body p-0">
 <div class="row p-5 bgdiv">
 <div class="col-md-12" style="float: none; margin:0 auto;">
-	<form method="POST" class="user" action="register.do">
+	<form method="POST" class="user" action="register.do" id="registerForm">
 		<br><h1 class="text-center">회원가입</h1><br>
 		<div class="form-group">
 			<input type="email" class="form-control form-control-user"
-			placeholder="Enter Email Address..."/>
+			placeholder="이메일 주소를 입력해주세요" id="email" name="email"/>
 		</div>
 		<div class="form-group row">
 			<div class="col-sm-6">
 				<input type="password" class="form-control form-control-user"
-				placeholder="Password"/>
+				placeholder="비밀번호" id="pass" name="pass"/>
 			</div>
 			<div class="col-sm-6">
 				<input type="password" class="form-control form-control-user"
-				placeholder="Confirm Password"/>
+				placeholder="비밀번호 확인" id="confirmpass" name="conpass"/>
 			</div>
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control form-control-user"
-			placeholder="Name">
+			placeholder="이름" id="name" name="name">
 		</div>
+        <div id="alert" class="text-center text-danger"></div>
 		<br>
-        <input type="submit" class="btn btn-primary btn-user btn-block loginInput" value="회원가입">
+		<br>
+        <input type="button" class="btn btn-primary btn-user btn-block loginInput" value="회원가입" id="register">
 		<hr>
 		<div class="text-center">
 			<a class="small" href="login">Already have an account? Login</a>
@@ -66,13 +71,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="resources/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="resources/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="resources/js/demo/chart-area-demo.js"></script>
-    <script src="resources/js/demo/chart-pie-demo.js"></script>
 
 </body>
 </html>

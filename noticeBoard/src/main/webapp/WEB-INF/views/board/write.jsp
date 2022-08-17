@@ -16,8 +16,28 @@
     
 </head>
 <body>
-
-
+	<div id="wrapper">
+        
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <%@include file="../include/top_meun.jsp" %>
+                <div class="container">
+                	<form method="post">
+						<input type="text" name="bdTitle" class="form-control mt-4 mb-2"
+							placeholder="제목을 입력해주세요." maxlenght="20" required
+						>
+						<div class="form-group">
+							<textarea class="form-control" rows="10" name="bdContent"
+								placeholder="내용을 입력해주세요" maxlenght="200" required
+							></textarea>
+						</div>
+						<button id="write" class="btn btn-secondary mb-3">제출하기</button>
+					</form>
+                </div>
+        	</div>
+    	</div>
+    	
+    </div>
 
 <!-- Bootstrap core JavaScript-->
     <script src="resources/vendor/jquery/jquery.min.js"></script>
@@ -28,12 +48,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="resources/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="resources/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="resources/js/demo/chart-area-demo.js"></script>
-    <script src="resources/js/demo/chart-pie-demo.js"></script>
+    
 </body>
 </html>

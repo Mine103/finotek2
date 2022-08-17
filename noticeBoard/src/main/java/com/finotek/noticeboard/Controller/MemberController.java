@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.finotek.noticeboard.exception.EmailNotFoundException;
-import com.finotek.noticeboard.exception.EmailPasswordNotMatchException;
 import com.finotek.noticeboard.service.MemberService;
 import com.finotek.noticeboard.vo.MemberVO;
 
@@ -22,23 +20,44 @@ public class MemberController {
 	MemberService memberService;
 	
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public ModelAndView login(HttpSession session, String email, String pass) {
+	public ModelAndView login(HttpSession session, MemberVO vo) {
 		ModelAndView mav = new ModelAndView();
-		logger.info(email+"/"+pass);
-		try {
-			MemberVO member = memberService.login(email, pass);
-			session.setAttribute("member", member);
-			mav.setViewName("index");
-		} catch(EmailPasswordNotMatchException e) {
-			mav.addObject("message", "notmatch");
-		}
+		
+		//MemberVO login = memberService.login(vo);
+		
+		logger.info(vo.getEmail());
+		logger.info(vo.getPass());
+		
+		/*if(login == null) {
+			session.setAttribute("member", null);
+		} else {
+			session.setAttribute("member", login);
+		}*/
+		
+		mav.setViewName("redirect:/index");
 		return mav;
 	}
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
-	public String register() {
-		logger.info("register.do");
-		return "index";
+	public ModelAndView register(MemberVO vo) {
+		ModelAndView mav = new ModelAndView();
+		
+		logger.info(vo.getEmail());
+		logger.info(vo.getPass());
+		logger.info(vo.getName());
+		
+		//memberService.register(vo);
+		
+		mav.setViewName("redirect:/index");
+		return mav;
+	}
+	
+	@RequestMapping(value = "/logout.do")
+	public ModelAndView logout(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		memberService.logout(session);
+		mav.setViewName("redirect:/index");
+		return mav;
 	}
 	
 }

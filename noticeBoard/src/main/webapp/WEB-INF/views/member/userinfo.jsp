@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +17,11 @@
     <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-<body class="container bg-gradient-primary">
+<body>
 
+<%@include file="../include/top_meun.jsp" %>
+
+<div class="container bg-gradient">
 <div class="row justify-content-center">
 <div class="col-xl-10 col-lg-12 col-md-9">
 <div class="card o-hidden border-0 shadow-lg my-3">
@@ -29,20 +33,21 @@
 		<br><h1 class="text-center">회원 정보 수정</h1><br>
 		<div class="form-group">
 			<input type="email" class="form-control form-control-user loginInput"
-			placeholder="Email" name="email"/>
+			placeholder="Email" name="email" value="${member.email}"/>
 		</div>
 		<div class="form-group">
 			<input type="password" class="form-control form-control-user loginInput"
-			placeholder="Password" name="pass"/>
+			placeholder="Password" name="pass" value="${member.pass}"/>
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control form-control-user loginInput"
-			placeholder="Name" name="name"/>
+			placeholder="Name" name="name" value="${member.name}"/>
 		</div>
 		<br>
         <input type="submit" class="btn btn-primary btn-user btn-block loginInput" value="정보 수정">
 	</form>
 	
+</div>
 </div>
 </div>
 </div>

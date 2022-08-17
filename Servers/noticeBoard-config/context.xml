@@ -30,5 +30,4 @@
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
 
-
 </Context>

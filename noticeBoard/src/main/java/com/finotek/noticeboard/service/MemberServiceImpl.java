@@ -1,26 +1,37 @@
 package com.finotek.noticeboard.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Service;
 
 import com.finotek.noticeboard.dao.MemberDAO;
-import com.finotek.noticeboard.exception.EmailNotFoundException;
-import com.finotek.noticeboard.exception.EmailPasswordNotMatchException;
-import com.finotek.noticeboard.vo.LoginVO;
 import com.finotek.noticeboard.vo.MemberVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
-
-	private MemberDAO dao;
 	
+	MemberDAO memberDao;
+
 	@Override
-	public MemberVO login(String email, String pass) {
-		MemberVO member = dao.selectByEmail(new LoginVO(email, pass));
-		if(member == null) {
-			throw new EmailPasswordNotMatchException();
-		}
-		return member;
+	public List<MemberVO> selectAll() {
+		return memberDao.selectAll();
+	}
+
+	@Override
+	public MemberVO login(MemberVO vo) {
+		return memberDao.selectEmail(vo);
+	}
+
+	@Override
+	public void logout(HttpSession session) {
+		session.invalidate();
+	}
+
+	@Override
+	public void register(MemberVO vo) {
+		memberDao.insert(vo);
 	}
 	
 }

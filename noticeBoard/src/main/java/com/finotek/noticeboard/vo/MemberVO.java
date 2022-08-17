@@ -1,16 +1,9 @@
 package com.finotek.noticeboard.vo;
 
 public class MemberVO {
-	private int mid;
 	private String email;
 	private String pass;
 	private String name;
-	public int getMid() {
-		return mid;
-	}
-	public void setMid(int mid) {
-		this.mid = mid;
-	}
 	public String getEmail() {
 		return email;
 	}
@@ -27,6 +20,17 @@ public class MemberVO {
 		return name;
 	}
 	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public MemberVO(String email, String pass) {
+		this.email = email;
+		this.pass = pass;
+	}
+	
+	public MemberVO(String email, String pass, String name) {
+		this.email = email;
+		this.pass = pass;
 		this.name = name;
 	}
 }

@@ -1,22 +1,16 @@
 package com.finotek.noticeboard.vo;
 
-public class LoginVO {
+public class AuthInfo {
 	private String email;
 	private String pass;
 	public String getEmail() {
 		return email;
 	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getPass() {
 		return pass;
 	}
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
 	
-	public LoginVO(String email, String pass) {
+	public AuthInfo(String email, String pass) {
 		this.email = email;
 		this.pass = pass;
 	}
