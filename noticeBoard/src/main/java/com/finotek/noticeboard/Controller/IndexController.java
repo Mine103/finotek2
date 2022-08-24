@@ -12,9 +12,8 @@ public class IndexController {
 	BoardService service;
 
 	@RequestMapping(value = {"/", "/index"})
-	public String index(Model model) {
-		model.addAttribute("list", service.list());
-		return "index";
+	public String index() {
+		return "redirect:/list";
 	}
 	
 }

@@ -6,7 +6,15 @@ public class BoardVO {
 	private String title;
 	private String content;
 	private String writer;
-	private String regdate;
+	private String regDate;
+	private int viewCnt;
+	private int mid;
+	public int getMid() {
+		return mid;
+	}
+	public void setMid(int mid) {
+		this.mid = mid;
+	}
 	public int getBno() {
 		return bno;
 	}
@@ -31,11 +39,17 @@ public class BoardVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getRegdate() {
-		return regdate;
+	public String getRegDate() {
+		return regDate;
 	}
-	public void setRegdate(String writedate) {
-		this.regdate = writedate;
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	public int getViewCnt() {
+		return viewCnt;
+	}
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
 	}
 	
 }
