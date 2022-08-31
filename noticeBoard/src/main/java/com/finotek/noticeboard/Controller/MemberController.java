@@ -23,16 +23,13 @@ public class MemberController {
 	public ModelAndView login(HttpSession session, MemberVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
-		//MemberVO login = memberService.login(vo);
+		MemberVO login = memberService.login(vo);
 		
-		logger.info(vo.getEmail());
-		logger.info(vo.getPass());
-		
-		/*if(login == null) {
+		if(login == null) {
 			session.setAttribute("member", null);
 		} else {
 			session.setAttribute("member", login);
-		}*/
+		}
 		
 		mav.setViewName("redirect:/index");
 		return mav;
@@ -42,11 +39,7 @@ public class MemberController {
 	public ModelAndView register(MemberVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
-		logger.info(vo.getEmail());
-		logger.info(vo.getPass());
-		logger.info(vo.getName());
-		
-		//memberService.register(vo);
+		memberService.register(vo);
 		
 		mav.setViewName("redirect:/index");
 		return mav;

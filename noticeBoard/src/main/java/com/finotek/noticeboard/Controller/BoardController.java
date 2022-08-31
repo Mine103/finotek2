@@ -70,4 +70,9 @@ public class BoardController {
 		return "redirect:/list";
 	}
 	
+	@RequestMapping(value = "/read2")
+	public String read2() {
+		return "board/read2";
+	}
+	
 }
