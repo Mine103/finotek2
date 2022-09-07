@@ -2,6 +2,8 @@ package com.finotek.noticeboard.service;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 
 import com.finotek.noticeboard.dao.ReplyDAO;
@@ -33,7 +35,6 @@ public class ReplyServiceImpl implements ReplyService {
 		try {
 			dao.update(replyVO);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -8,11 +8,10 @@ import com.finotek.noticeboard.vo.MemberVO;
 
 public interface MemberService {
 	
-	public List<MemberVO> selectAll();
 	public MemberVO login(MemberVO vo);
-	
 	public void register(MemberVO vo);
-	
 	public void logout(HttpSession session);
+	public int idChk(MemberVO vo);
+	public int nameChk(MemberVO vo);
 	
 }

@@ -1,7 +1,6 @@
 package com.finotek.noticeboard.service;
 
-import java.util.List;
-
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
@@ -12,16 +11,11 @@ import com.finotek.noticeboard.vo.MemberVO;
 @Service
 public class MemberServiceImpl implements MemberService {
 	
-	MemberDAO memberDao;
-
-	@Override
-	public List<MemberVO> selectAll() {
-		return memberDao.selectAll();
-	}
+	MemberDAO dao;
 
 	@Override
 	public MemberVO login(MemberVO vo) {
-		return memberDao.selectEmail(vo);
+		return dao.selectEmail(vo);
 	}
 
 	@Override
@@ -31,7 +25,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void register(MemberVO vo) {
-		memberDao.insert(vo);
+		dao.insert(vo);
+	}
+
+	@Override
+	public int idChk(MemberVO vo) {
+		return dao.idChk(vo);
+	}
+
+	@Override
+	public int nameChk(MemberVO vo) {
+		return dao.nameChk(vo);
 	}
 	
 }

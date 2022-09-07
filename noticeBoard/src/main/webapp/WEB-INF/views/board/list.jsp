@@ -15,6 +15,7 @@
     <!-- Custom styles for this template-->
     <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
     	$(document).ready(function() {
     		var result = "${msg}";
@@ -70,12 +71,12 @@
 							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 								<li class="page-item"
         							<c:out value="${pageMaker.criteria.page == idx ? 'class=active' : ''}"/>>
-        							<a class="page-link" href="${path}/article/listPaging?page=${idx}">${idx}</a>
+        							<a class="page-link" href="/list?page=${idx}">${idx}</a>
         						</li>
 							</c:forEach>
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
         						<li class="page-item"><a class="page-link"
-        						href="${path}/article/listPaging?page=${pageMaker.endPage + 1}">다음</a></li>
+        						href="/list?page=${pageMaker.endPage + 1}">다음</a></li>
       						</c:if>
 						</ul>
 					</div>

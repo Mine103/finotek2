@@ -1,10 +1,14 @@
 package com.finotek.noticeboard.Controller;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.finotek.noticeboard.paging.Criteria;
@@ -65,10 +69,20 @@ public class BoardController {
 	@RequestMapping(value = "/remove")
 	public String remove(@RequestParam("bno") int bno,
 			RedirectAttributes attributes) {
-		service.delect(bno);
+		service.delete(bno);
 		attributes.addFlashAttribute("msg", "delSuccess");
 		return "redirect:/list";
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public ModelAndView search(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("board/search");
+		mav.addObject("search", request.getParameter("search"));
+		
+		return mav;
+	}
+	
 	
 	@RequestMapping(value = "/read2")
 	public String read2() {

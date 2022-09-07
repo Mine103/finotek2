@@ -19,6 +19,29 @@ public class MemberController {
 	
 	MemberService memberService;
 	
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "member/login";
+	}
+	
+	@RequestMapping(value = "/register")
+	public String register() {
+		return "member/register";
+	}
+	
+	@RequestMapping(value = "/userinfo")
+	public String userinfo(HttpSession session) {
+		return "member/userinfo";
+	}
+	
+	@RequestMapping(value = "/userinfo.do", method = RequestMethod.POST)
+	public ModelAndView changeUserInfo(MemberVO vo) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("redirect:/index");
+		return mav;
+	}
+	
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public ModelAndView login(HttpSession session, MemberVO vo) {
 		ModelAndView mav = new ModelAndView();
@@ -51,6 +74,18 @@ public class MemberController {
 		memberService.logout(session);
 		mav.setViewName("redirect:/index");
 		return mav;
+	}
+	
+	@RequestMapping(value = "/idChk")
+	public int idChk(MemberVO vo) { 
+		int result = memberService.idChk(vo);
+		return result;
+	}
+	
+	@RequestMapping(value = "/nameChk")
+	public int nameChk(MemberVO vo) {
+		int result = memberService.nameChk(vo);
+		return result;
 	}
 	
 }

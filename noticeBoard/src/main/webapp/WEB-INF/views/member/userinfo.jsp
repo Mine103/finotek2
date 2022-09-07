@@ -15,6 +15,15 @@
 
     <!-- Custom styles for this template-->
     <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script>
+    	$(document).ready(function() {
+    		$(".delete").on("click", function(event) {
+    			location.href = "/delete";
+    		});
+    	});
+    </script>
 
 </head>
 <body>
@@ -32,8 +41,8 @@
 	<form method="POST" class="user">
 		<br><h1 class="text-center">회원 정보 수정</h1><br>
 		<div class="form-group">
-			<input type="email" class="form-control form-control-user loginInput"
-			placeholder="Email" name="email" value="${member.email}"/>
+			<div class="form-control form-control-user loginInput"
+			name="email">${member.email}</div>
 		</div>
 		<div class="form-group">
 			<input type="password" class="form-control form-control-user loginInput"
@@ -45,7 +54,31 @@
 		</div>
 		<br>
         <input type="submit" class="btn btn-primary btn-user btn-block loginInput" value="정보 수정">
+        <br><br>
+        <button type="button" class="btn btn-danger btn-user btn-block" data-toggle="modal" data-target="#exampleModal">
+  			회원 탈퇴
+		</button>
 	</form>
+	
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+		    	<div class="modal-header">
+		        	<h5 class="modal-title" id="exampleModalLabel">회원 탈퇴</h5>
+		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          	<span aria-hidden="true">&times;</span>
+		        	</button>
+		      	</div>
+		      	<div class="modal-body">
+		      		  정말 탈퇴하시겠습니까?
+		      	</div>
+		      	<div class="modal-footer">
+		        	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+		        	<button type="button" class="btn btn-danger" id="delete">탈퇴</button>
+		      	</div>
+		    </div>
+		</div>
+	</div>
 	
 </div>
 </div>

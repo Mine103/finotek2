@@ -5,13 +5,15 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.finotek.noticeboard.paging.Criteria;
 import com.finotek.noticeboard.vo.BoardVO;
 
+@Repository
 public class BoardDAO {
 	
-	@Inject SqlSession sqlSession;
+	SqlSession sqlSession;
 	
 	public void create(BoardVO vo) {
 		sqlSession.insert("board.insert", vo);

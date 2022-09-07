@@ -39,6 +39,22 @@
          UserDatabaseRealm to authenticate users
     -->
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
+  	 <Resource
+		name="jdbc/mydb"
+		auth="Container"
+		type="javax.sql.DataSource"
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+		maxActive="50"
+		maxIdle="30"
+		maxWait="10000"
+		username="admin"
+		password="admin1234"
+		driverClassName="com.mysql.jdbc.Driver"
+		validationQuery = "select 1"
+		testWhileIdle = "true"
+		timeBetweenEvictionRunsMillis = "7200000"
+		url="jdbc:mysql://noticeboard.clc5kz1didtt.ap-northeast-2.rds.amazonaws.com:3306/noticeboard?characterEncoding=utf8"/>
+
   </GlobalNamingResources>
 
   <!-- A "Service" is a collection of one or more "Connectors" that share

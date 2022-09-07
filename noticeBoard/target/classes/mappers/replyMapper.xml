@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reply">
+	
+	<select id="list" resultMap="ReplyResultMap">
+        SELECT
+          rno
+          , bno
+          , reply_text
+          , reply_writer
+          , reg_date
+          , update_date
+        FROM reply
+        WHERE bno = #{bno}
+        ORDER BY rno
+    </select>
+
+    <insert id="create">
+        INSERT INTO reply (
+            bno
+            , reply_text
+            , reply_writer
+        ) VALUES (
+            #{bno}
+            , #{reply_text}
+            , #{reply_writer}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE reply
+        SET
+            reply_text = #{reply_text}
+            , update_date = NOW()
+        WHERE rno = #{rno}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM reply
+        WHERE rno = #{rno}
+    </delete>
+    
+    <select id="listPaging" resultMap="ReplyResultMap">
+    SELECT
+        rno
+        , bno
+        , reply_text
+        , reply_writer
+        , reg_date
+        , update_date
+    FROM reply
+    WHERE bno = #{bno}
+    ORDER BY rno
+    LIMIT #{criteria.pageStart}, #{criteria.perPageNum}
+</select>
+
+<select id="countReplies" resultType="int">
+    SELECT
+        COUNT(bno)
+    FROM reply
+    WHERE bno = #{bno}
+</select>
+
+    <resultMap id="ReplyResultMap" type="ReplyVO">
+        <id property="rno" column="rno"/>
+        <result property="bno" column="bno"/>
+        <result property="reply_text" column="reply_text"/>
+        <result property="reply_writer" column="reply_writer"/>
+        <result property="reg_date" column="reg_date"/>
+        <result property="update_date" column="update_date"/>
+    </resultMap>
+
+    <resultMap id="BoardResultMap" type="BoardVO">
+        <id property="bno" column="bno"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="writer" column="writer"/>
+        <result property="regDate" column="regdate"/>
+    </resultMap>
+   
+
+</mapper>

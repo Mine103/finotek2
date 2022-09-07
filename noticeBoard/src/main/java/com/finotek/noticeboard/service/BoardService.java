@@ -10,7 +10,7 @@ public interface BoardService {
 	public void create(BoardVO vo);
 	public BoardVO read(int bno);
 	public void update(BoardVO vo);
-	public void delect(int bno);
+	public void delete(int bno);
 	public List<BoardVO> list();
 	public List<BoardVO> listCriteria(Criteria criteria);
 	public int countBoard(Criteria criteria);
